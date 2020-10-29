@@ -16,10 +16,11 @@ import type {
 	GuildVerificationLevel,
 	GuildWidgetStyle,
 	IntegrationExpireBehavior,
-} from '../payloads';
-import type { RESTPutAPIChannelPermissionsJSONBody } from './channel';
+} from '../payloads/index.ts';
+import type { RESTPutAPIChannelPermissionsJSONBody } from './channel.ts';
 
-export interface APIGuildCreateOverwrite extends RESTPutAPIChannelPermissionsJSONBody {
+export interface APIGuildCreateOverwrite extends RESTPutAPIChannelPermissionsJSONBody
+{
 	id: number | string;
 }
 
@@ -32,14 +33,16 @@ export type APIGuildCreatePartialChannel = Partial<
 	permission_overwrites?: APIGuildCreateOverwrite[];
 };
 
-export interface APIGuildCreateRole extends RESTPostAPIGuildRoleJSONBody {
+export interface APIGuildCreateRole extends RESTPostAPIGuildRoleJSONBody
+{
 	id: number | string;
 }
 
 /**
  * https://discord.com/developers/docs/resources/guild#create-guild
  */
-export interface RESTPostAPIGuildsJSONBody {
+export interface RESTPostAPIGuildsJSONBody
+{
 	name: string;
 	region?: string;
 	icon?: string;
@@ -58,7 +61,8 @@ export type RESTPostAPIGuildsResult = APIGuild;
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild
  */
-export interface RESTGetAPIGuildQuery {
+export interface RESTGetAPIGuildQuery
+{
 	with_counts?: boolean;
 }
 
@@ -72,7 +76,8 @@ export type RESTGetAPIGuildPreviewResult = APIGuildPreview;
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild
  */
-export interface RESTPatchAPIGuildJSONBody {
+export interface RESTPatchAPIGuildJSONBody
+{
 	name?: string;
 	region?: string;
 	verification_level?: GuildVerificationLevel;
@@ -132,14 +137,16 @@ export type RESTGetAPIGuildMemberResult = APIGuildMember;
 /**
  * https://discord.com/developers/docs/resources/guild#list-guild-members
  */
-export interface RESTGetAPIGuildMembersQuery {
+export interface RESTGetAPIGuildMembersQuery
+{
 	limit?: number;
 	after?: string;
 }
 
 export type RESTGetAPIGuildMembersResult = APIGuildMember[];
 
-export interface RESTGetAPIGuildMembersSearchQuery {
+export interface RESTGetAPIGuildMembersSearchQuery
+{
 	query: string;
 	limit?: number;
 }
@@ -149,7 +156,8 @@ export type RESTGetAPIGuildMembersSearchResult = APIGuildMember[];
 /**
  * https://discord.com/developers/docs/resources/guild#add-guild-member
  */
-export interface RESTPutAPIGuildMemberJSONBody {
+export interface RESTPutAPIGuildMemberJSONBody
+{
 	access_token: string;
 	nick?: string;
 	roles?: string[];
@@ -162,7 +170,8 @@ export type RESTPutAPIGuildMemberResult = APIGuildMember | undefined;
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-member
  */
-export interface RESTPatchAPIGuildMemberJSONBody {
+export interface RESTPatchAPIGuildMemberJSONBody
+{
 	nick?: string | null;
 	roles?: string[] | null;
 	mute?: boolean | null;
@@ -175,7 +184,8 @@ export type RESTPatchAPIGuildMemberResult = never;
 /**
  * https://discord.com/developers/docs/resources/guild#modify-current-user-nick
  */
-export interface RESTPatchAPICurrentGuildMemberNicknameJSONBody {
+export interface RESTPatchAPICurrentGuildMemberNicknameJSONBody
+{
 	nick?: string | null;
 }
 
@@ -209,7 +219,8 @@ export type RESTGetAPIGuildBanResult = APIBan;
 /**
  * https://discord.com/developers/docs/resources/guild#create-guild-ban
  */
-export interface RESTPutAPIGuildBanJSONBody {
+export interface RESTPutAPIGuildBanJSONBody
+{
 	delete_message_days?: number;
 	reason?: string;
 }
@@ -229,7 +240,8 @@ export type RESTGetAPIGuildRolesResult = APIRole[];
 /**
  * https://discord.com/developers/docs/resources/guild#create-guild-role
  */
-export interface RESTPostAPIGuildRoleJSONBody {
+export interface RESTPostAPIGuildRoleJSONBody
+{
 	name?: string | null;
 	permissions?: string | null;
 	color?: number | null;
@@ -252,7 +264,8 @@ export type RESTPatchAPIGuildRolePositionsResult = APIRole[];
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-role
  */
-export interface RESTPatchAPIGuildRoleJSONBody {
+export interface RESTPatchAPIGuildRoleJSONBody
+{
 	name?: string;
 	permissions?: string;
 	color?: number;
@@ -270,7 +283,8 @@ export type RESTDeleteAPIGuildRoleResult = never;
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild-prune-count
  */
-export interface RESTGetAPIGuildPruneCountQuery {
+export interface RESTGetAPIGuildPruneCountQuery
+{
 	days?: number;
 	/**
 	 * While this is typed as a string, it represents an array of
@@ -281,20 +295,23 @@ export interface RESTGetAPIGuildPruneCountQuery {
 	include_roles?: string;
 }
 
-export interface RESTGetAPIGuildPruneCountResult {
+export interface RESTGetAPIGuildPruneCountResult
+{
 	pruned: number;
 }
 
 /**
  * https://discord.com/developers/docs/resources/guild#begin-guild-prune
  */
-export interface RESTPostAPIGuildPruneJSONBody {
+export interface RESTPostAPIGuildPruneJSONBody
+{
 	days?: number;
 	compute_prune_count?: boolean;
 	include_roles?: string[];
 }
 
-export interface RESTPostAPIGuildPruneResult {
+export interface RESTPostAPIGuildPruneResult
+{
 	pruned: number | null;
 }
 
@@ -311,7 +328,8 @@ export type RESTGetAPIGuildInvitesResult = APIInvite[];
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild-integrations
  */
-export interface RESTGetAPIGuildIntegrationsQuery {
+export interface RESTGetAPIGuildIntegrationsQuery
+{
 	include_applications?: boolean;
 }
 
@@ -320,7 +338,8 @@ export type RESTGetAPIGuildIntegrationsResult = APIGuildIntegration[];
 /**
  * https://discord.com/developers/docs/resources/guild#create-guild-integration
  */
-export interface RESTPostAPIGuildIntegrationJSONBody {
+export interface RESTPostAPIGuildIntegrationJSONBody
+{
 	type: string;
 	id: string;
 }
@@ -330,7 +349,8 @@ export type RESTPostAPIGuildIntegrationResult = never;
 /**
  * https://discord.com/developers/docs/resources/guild#modify-guild-integration
  */
-export interface RESTPatchAPIGuildIntegrationJSONBody {
+export interface RESTPatchAPIGuildIntegrationJSONBody
+{
 	expire_behavior?: IntegrationExpireBehavior | null;
 	expire_grace_period?: number | null;
 	enable_emoticons?: boolean | null;
@@ -368,7 +388,8 @@ export type RESTGetAPIGuildWidgetResult = APIGuildWidget;
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild-vanity-url
  */
-export interface RESTGetAPIGuildVanityUrlResult {
+export interface RESTGetAPIGuildVanityUrlResult
+{
 	code: string | null;
 	uses: number;
 }
@@ -376,7 +397,8 @@ export interface RESTGetAPIGuildVanityUrlResult {
 /**
  * https://discord.com/developers/docs/resources/guild#get-guild-widget-image
  */
-export interface RESTGetAPIGuildWidgetImageQuery {
+export interface RESTGetAPIGuildWidgetImageQuery
+{
 	style?: GuildWidgetStyle;
 }
 

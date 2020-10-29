@@ -10,7 +10,8 @@
  * further bits added may cause issues if done so. Try to use BigInts as much as possible
  * or modules that can replicate them in some way.
  */
-export const PermissionFlagsBits = {
+export const PermissionFlagsBits =
+{
 	CREATE_INSTANT_INVITE: 1n,
 	KICK_MEMBERS: 2n,
 	BAN_MEMBERS: 4n,

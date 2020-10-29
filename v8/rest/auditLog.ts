@@ -1,9 +1,10 @@
-import type { APIAuditLog, AuditLogEvent } from '../payloads/auditLog';
+import type { APIAuditLog, AuditLogEvent } from '../payloads/auditLog.ts';
 
 /**
  * https://discord.com/developers/docs/resources/audit-log#get-guild-audit-log
  */
-export interface RESTGetAPIAuditLogQuery {
+export interface RESTGetAPIAuditLogQuery
+{
 	user_id?: string;
 	action_type?: AuditLogEvent;
 	before?: string;

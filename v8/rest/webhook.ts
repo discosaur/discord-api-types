@@ -1,10 +1,11 @@
-import type { APIAllowedMentionsSend } from './channel';
-import type { APIEmbed, APIMessage, APIWebhook } from '../payloads';
+import type { APIAllowedMentionsSend } from './channel.ts';
+import type { APIEmbed, APIMessage, APIWebhook } from '../payloads/index.ts';
 
 /**
  * https://discord.com/developers/docs/resources/webhook#create-webhook
  */
-export interface RESTPostAPIChannelWebhookJSONBody {
+export interface RESTPostAPIChannelWebhookJSONBody
+{
 	name: string;
 	avatar?: string | null;
 }
@@ -34,7 +35,8 @@ export type RESTGetAPIWebhookWithTokenResult = Omit<APIWebhook, 'user'>;
 /**
  * https://discord.com/developers/docs/resources/webhook#modify-webhook
  */
-export interface RESTPatchAPIWebhookJSONBody {
+export interface RESTPatchAPIWebhookJSONBody
+{
 	name?: string;
 	avatar?: string | null;
 	channel_id?: string;
@@ -58,7 +60,8 @@ export type RESTDeleteAPIWebhookWithTokenResult = never;
 /**
  * https://discord.com/developers/docs/resources/webhook#execute-webhook
  */
-export interface RESTPostAPIWebhookWithTokenJSONBody {
+export interface RESTPostAPIWebhookWithTokenJSONBody
+{
 	content?: string;
 	username?: string;
 	avatar_url?: string;
@@ -80,18 +83,19 @@ export type RESTPostAPIWebhookWithTokenFormDataBody =
 			 * The file contents
 			 */
 			file: unknown;
-	  }
+		}
 	| (RESTPostAPIWebhookWithTokenJSONBody & {
 			/**
 			 * The file contents
 			 */
 			file: unknown;
-	  });
+		});
 
 /**
  * https://discord.com/developers/docs/resources/webhook#execute-webhook-querystring-params
  */
-export interface RESTPostAPIWebhookWithTokenQuery {
+export interface RESTPostAPIWebhookWithTokenQuery
+{
 	wait?: boolean;
 }
 

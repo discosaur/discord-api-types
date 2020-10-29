@@ -139,7 +139,8 @@ export enum RPCCloseEventCodes {
 /**
  * https://discord.com/developers/docs/topics/gateway#connecting-gateway-url-params
  */
-export interface GatewayConnectQuery {
+export interface GatewayConnectQuery
+{
 	v: string;
 	encoding: 'json' | 'etf';
 	compress?: 'zlib-stream';

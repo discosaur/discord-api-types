@@ -1,9 +1,10 @@
-import type { APIInvite } from '../payloads';
+import type { APIInvite } from '../payloads/index.ts';
 
 /**
  * https://discord.com/developers/docs/resources/invite#get-invite
  */
-export interface RESTGetAPIInviteQuery {
+export interface RESTGetAPIInviteQuery
+{
 	with_counts?: boolean;
 }
 

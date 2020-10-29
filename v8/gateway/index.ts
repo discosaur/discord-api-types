@@ -16,9 +16,9 @@ import type {
 	GatewayVoiceState,
 	InviteTargetUserType,
 	PresenceUpdateStatus,
-} from '../payloads';
+} from '../payloads/index.ts';
 
-export const GatewayVersion = '8';
+export const GatewayVersion = "8";
 
 /**
  * https://discord.com/developers/docs/topics/opcodes-and-status-codes#gateway-gateway-opcodes

@@ -1,4 +1,4 @@
-import type { APIEmoji } from '../payloads';
+import type { APIEmoji } from '../payloads.ts';
 
 /**
  * https://discord.com/developers/docs/resources/emoji#list-guild-emojis
@@ -13,7 +13,8 @@ export type RESTGetAPIGuildEmojiResult = APIEmoji;
 /**
  * https://discord.com/developers/docs/resources/emoji#create-guild-emoji-json-params
  */
-export interface RESTPostAPIGuildEmojiJSONBody {
+export interface RESTPostAPIGuildEmojiJSONBody
+{
 	name: string;
 	/**
 	 * The image data, read more [here](https://discord.com/developers/docs/reference#image-data)
@@ -27,7 +28,8 @@ export type RESTPostAPIGuildEmojiResult = APIEmoji;
 /**
  * https://discord.com/developers/docs/resources/emoji#modify-guild-emoji
  */
-export interface RESTPatchAPIGuildEmojiJSONBody {
+export interface RESTPatchAPIGuildEmojiJSONBody
+{
 	name?: string;
 	roles?: string[] | null;
 }

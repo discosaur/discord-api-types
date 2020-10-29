@@ -2,14 +2,15 @@
  * Types extracted from https://discord.com/developers/docs/resources/channel
  */
 
-import type { APIPartialEmoji } from './emoji';
-import type { APIGuildMember } from './guild';
-import type { APIUser } from './user';
+import type { APIPartialEmoji } from './emoji.ts';
+import type { APIGuildMember } from './guild.ts';
+import type { APIUser } from './user.ts';
 
 /**
  * Not documented, but partial only includes id, name, and type
  */
-export interface APIPartialChannel {
+export interface APIPartialChannel
+{
 	id: string;
 	type: ChannelType;
 	name?: string;
@@ -18,7 +19,8 @@ export interface APIPartialChannel {
 /**
  * https://discord.com/developers/docs/resources/channel#channel-object-channel-structure
  */
-export interface APIChannel extends APIPartialChannel {
+export interface APIChannel extends APIPartialChannel
+{
 	guild_id?: string;
 	position?: number;
 	permission_overwrites?: APIOverwrite[];
@@ -40,7 +42,8 @@ export interface APIChannel extends APIPartialChannel {
 /**
  * https://discord.com/developers/docs/resources/channel#channel-object-channel-types
  */
-export enum ChannelType {
+export enum ChannelType
+{
 	GUILD_TEXT = 0,
 	DM,
 	GUILD_VOICE,
@@ -53,7 +56,8 @@ export enum ChannelType {
 /**
  * https://discord.com/developers/docs/resources/channel#message-object-message-structure
  */
-export interface APIMessage {
+export interface APIMessage
+{
 	id: string;
 	channel_id: string;
 	guild_id?: string;
@@ -84,7 +88,8 @@ export interface APIMessage {
 /**
  * https://discord.com/developers/docs/resources/channel#message-object-message-types
  */
-export enum MessageType {
+export enum MessageType
+{
 	DEFAULT,
 	RECIPIENT_ADD,
 	RECIPIENT_REMOVE,
@@ -108,7 +113,8 @@ export enum MessageType {
 /**
  * https://discord.com/developers/docs/resources/channel#message-object-message-activity-structure
  */
-export interface APIMessageActivity {
+export interface APIMessageActivity
+{
 	type: MessageActivityType;
 	party_id?: string;
 }
@@ -116,7 +122,8 @@ export interface APIMessageActivity {
 /**
  * https://discord.com/developers/docs/resources/channel#message-object-message-application-structure
  */
-export interface APIMessageApplication {
+export interface APIMessageApplication
+{
 	id: string;
 	cover_image?: string;
 	description: string;
@@ -127,7 +134,8 @@ export interface APIMessageApplication {
 /**
  * https://discord.com/developers/docs/resources/channel#message-object-message-reference-structure
  */
-export interface APIMessageReference {
+export interface APIMessageReference
+{
 	message_id?: string;
 	channel_id: string;
 	guild_id?: string;
@@ -136,7 +144,8 @@ export interface APIMessageReference {
 /**
  * https://discord.com/developers/docs/resources/channel#message-object-message-activity-types
  */
-export enum MessageActivityType {
+export enum MessageActivityType
+{
 	JOIN = 1,
 	SPECTATE,
 	LISTEN,
@@ -146,7 +155,8 @@ export enum MessageActivityType {
 /**
  * https://discord.com/developers/docs/resources/channel#message-object-message-flags
  */
-export enum MessageFlags {
+export enum MessageFlags
+{
 	CROSSPOSTED = 1 << 0,
 	IS_CROSSPOST = 1 << 1,
 	SUPPRESS_EMBEDS = 1 << 2,
@@ -157,7 +167,8 @@ export enum MessageFlags {
 /**
  * https://discord.com/developers/docs/resources/channel#reaction-object-reaction-structure
  */
-export interface APIReaction {
+export interface APIReaction
+{
 	count: number;
 	me: boolean;
 	emoji: APIPartialEmoji;
@@ -166,14 +177,16 @@ export interface APIReaction {
 /**
  * https://discord.com/developers/docs/resources/channel#overwrite-object-overwrite-structure
  */
-export interface APIOverwrite {
+export interface APIOverwrite
+{
 	id: string;
 	type: OverwriteType;
 	allow: string;
 	deny: string;
 }
 
-export enum OverwriteType {
+export enum OverwriteType
+{
 	Role,
 	Member,
 }
@@ -181,7 +194,8 @@ export enum OverwriteType {
 /**
  * https://discord.com/developers/docs/resources/channel#embed-object-embed-structure
  */
-export interface APIEmbed {
+export interface APIEmbed
+{
 	title?: string;
 	/**
 	 * @deprecated *Embed types should be considered deprecated and might be removed in a future API version*
@@ -204,7 +218,8 @@ export interface APIEmbed {
  * https://discord.com/developers/docs/resources/channel#embed-object-embed-types
  * @deprecated *Embed types should be considered deprecated and might be removed in a future API version*
  */
-export enum EmbedType {
+export enum EmbedType
+{
 	Rich = 'rich',
 	Image = 'image',
 	Video = 'video',
@@ -216,7 +231,8 @@ export enum EmbedType {
 /**
  * https://discord.com/developers/docs/resources/channel#embed-object-embed-thumbnail-structure
  */
-export interface APIEmbedThumbnail {
+export interface APIEmbedThumbnail
+{
 	url?: string;
 	proxy_url?: string;
 	height?: number;
@@ -226,7 +242,8 @@ export interface APIEmbedThumbnail {
 /**
  * https://discord.com/developers/docs/resources/channel#embed-object-embed-video-structure
  */
-export interface APIEmbedVideo {
+export interface APIEmbedVideo
+{
 	url?: string;
 	height?: number;
 	width?: number;
@@ -235,7 +252,8 @@ export interface APIEmbedVideo {
 /**
  * https://discord.com/developers/docs/resources/channel#embed-object-embed-image-structure
  */
-export interface APIEmbedImage {
+export interface APIEmbedImage
+{
 	url?: string;
 	proxy_url?: string;
 	height?: number;
@@ -245,7 +263,8 @@ export interface APIEmbedImage {
 /**
  * https://discord.com/developers/docs/resources/channel#embed-object-embed-provider-structure
  */
-export interface APIEmbedProvider {
+export interface APIEmbedProvider
+{
 	name?: string;
 	url?: string;
 }
@@ -253,7 +272,8 @@ export interface APIEmbedProvider {
 /**
  * https://discord.com/developers/docs/resources/channel#embed-object-embed-author-structure
  */
-export interface APIEmbedAuthor {
+export interface APIEmbedAuthor
+{
 	name?: string;
 	url?: string;
 	icon_url?: string;
@@ -263,7 +283,8 @@ export interface APIEmbedAuthor {
 /**
  * https://discord.com/developers/docs/resources/channel#embed-object-embed-footer-structure
  */
-export interface APIEmbedFooter {
+export interface APIEmbedFooter
+{
 	text: string;
 	icon_url?: string;
 	proxy_icon_url?: string;
@@ -272,7 +293,8 @@ export interface APIEmbedFooter {
 /**
  * https://discord.com/developers/docs/resources/channel#embed-object-embed-field-structure
  */
-export interface APIEmbedField {
+export interface APIEmbedField
+{
 	name: string;
 	value: string;
 	inline?: boolean;
@@ -281,7 +303,8 @@ export interface APIEmbedField {
 /**
  * https://discord.com/developers/docs/resources/channel#attachment-object-attachment-structure
  */
-export interface APIAttachment {
+export interface APIAttachment
+{
 	id: string;
 	filename: string;
 	size: number;
@@ -294,14 +317,16 @@ export interface APIAttachment {
 /**
  * https://discord.com/developers/docs/resources/channel#channel-mention-object-channel-mention-structure
  */
-export interface APIChannelMention {
+export interface APIChannelMention
+{
 	id: string;
 	guild_id: string;
 	type: ChannelType;
 	name: string;
 }
 
-export interface APIFollowedChannel {
+export interface APIFollowedChannel
+{
 	channel_id: string;
 	webhook_id: string;
 }
